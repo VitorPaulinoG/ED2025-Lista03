@@ -6,6 +6,7 @@
     "test": "jest",
     "docs": "jsdoc -c jsdoc.json"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
