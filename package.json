@@ -2,12 +2,10 @@
   "name": "ed2025",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "jest",
     "docs": "jsdoc -c jsdoc.json"
   },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
