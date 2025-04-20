@@ -1,25 +1,25 @@
 import SimplyLinkedList from "../src/SimplyLinkedList";
 
-let lista;
+let l;
 beforeEach(() => {
-    lista = new SimplyLinkedList();
+    l = new SimplyLinkedList();
 });
 
 test("Deve iniciar vazia", () => {
-    expect(lista.isEmpty()).toBe(true);
+    expect(l.isEmpty()).toBe(true);
 })
 
 test("Deve adicionar elementos", () => {
-    lista.add('A');
-    lista.add('B');
-    lista.add('C');
-    lista.add('D');
-    expect(lista.getLength()).toBe(4);
-    expect(lista.isEmpty()).toBe(false);
-    expect(lista.head.prox.dado).toBe("D");
-    lista.append('E');
-    expect(lista.getLength()).toBe(5);
-    let tempNode = lista.head.prox;
+    l.add('A');
+    l.add('B');
+    l.add('C');
+    l.add('D');
+    expect(l.getLength()).toBe(4);
+    expect(l.isEmpty()).toBe(false);
+    expect(l.head.prox.dado).toBe("D");
+    l.append('E');
+    expect(l.getLength()).toBe(5);
+    let tempNode = l.head.prox;
     while(tempNode.prox != null) {
         tempNode = tempNode.prox;
     }
@@ -27,31 +27,55 @@ test("Deve adicionar elementos", () => {
 });
 
 test("Deve buscar elementos", () => {
-    lista.append('A');
-    lista.append('B');
-    lista.append('C');
-    lista.append('D');
-    expect(lista.search('C')).toBe(true);
+    l.append('A');
+    l.append('B');
+    l.append('C');
+    l.append('D');
+    expect(l.search('C')).toBe(true);
 });
 
 test("Deve remover elementos", () => {
-    expect(lista.isEmpty()).toBe(true);
-    lista.removeFirst();
-    expect(lista.isEmpty()).toBe(true);
-    lista.append('A');
-    lista.append('B');
-    lista.append('C');
-    lista.append('D');
-    lista.removeFirst();
-    lista.removeFirst();
-    expect(lista.getLength()).toBe(2);
-    expect(lista.head.prox.dado).toBe('C');
-    lista.removeLast();
-    expect(lista.head.prox.prox).toBe(null);
-    expect(lista.getLength()).toBe(1);
-    lista.append('A');
-    lista.append('B');
-    lista.clear(); 
-    expect(lista.isEmpty()).toBe(true);
-    expect(lista.getLength()).toBe(0);
+    expect(l.isEmpty()).toBe(true);
+    l.removeFirst();
+    expect(l.isEmpty()).toBe(true);
+    l.append('A');
+    l.append('B');
+    l.append('C');
+    l.append('D');
+    l.removeFirst();
+    l.removeFirst();
+    expect(l.getLength()).toBe(2);
+    expect(l.head.prox.dado).toBe('C');
+    l.removeLast();
+    expect(l.head.prox.prox).toBe(null);
+    expect(l.getLength()).toBe(1);
+    l.append('A');
+    l.append('B');
+    l.clear(); 
+    expect(l.isEmpty()).toBe(true);
+    expect(l.getLength()).toBe(0);
 });
+
+test("Deve adicionar elementos em uma posição", () => {
+    l.addAt('A', 9);
+    expect(l.head.prox.dado).toBe('A'); 
+    l.addAt('B', 0);
+    expect(l.head.prox.dado).toBe('B');
+    expect(l.head.prox.prox.dado).toBe('A');
+    l.addAt('C', -2);
+    expect(l.head.prox.dado).toBe('C');
+    l.addAt('D', 1);
+    let node = l.head.prox.prox;
+    expect(l.head.prox.dado).toBe('C');
+    expect(node.dado).toBe('D');
+    expect(node.prox.dado).toBe('B');
+})
+
+test("Deve remover elementos em uma posição", () => {
+    l.append('A');
+    l.append('B');
+    l.append('C');
+    l.append('D');
+    l.removeAt(2);
+    expect(l.head.prox.prox.prox.dado).toBe('D');
+})

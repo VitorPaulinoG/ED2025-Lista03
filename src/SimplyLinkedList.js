@@ -32,17 +32,17 @@ class SimplyLinkedList {
     }
 
     addAt(elemento, pos) {
-        let newNode = new LinkedListNode(elemento);
         if(pos >= this.length ) {
-            this.append(newNode);
+            this.append(elemento);
             return;
         } 
         
         if (pos <= 0) {
-            this.add(newNode);
+            this.add(elemento);
             return;
         }
-
+        
+        let newNode = new LinkedListNode(elemento);
         let nodeA = this.head;
         let nodeB = this.head.prox;
         let currentPos = 0;
@@ -115,6 +115,16 @@ class SimplyLinkedList {
     clear() {
         this.head.prox = null;
         this.length = 0;
+    }
+
+    toString() {
+        let result = '';
+        let current = this.head.prox;
+        while(current != null) {
+            result += current.dado + ' ';
+            current = current.prox;
+        }
+        return result.trim();
     }
 }
 

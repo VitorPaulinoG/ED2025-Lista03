@@ -9,6 +9,7 @@ beforeEach(() => {
 test("Deve iniciar vazia", () => {
     expect(p.isEmpty()).toBe(true);
     expect(p.length()).toBe(0);
+    expect(() => p.pop()).toThrow("Stack Underflow");
 })
 
 test("Deve adicionar elementos no topo", () => {

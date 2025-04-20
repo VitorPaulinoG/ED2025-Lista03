@@ -10,6 +10,7 @@ class Pilha {
     }
     
     pop() {
+        if(this.isEmpty()) throw new Error("Stack Underflow");
         let result = this.lista.head.prox;
         this.lista.removeFirst();
         return result.dado;

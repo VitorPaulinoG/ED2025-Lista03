@@ -9,6 +9,7 @@ beforeEach(() => {
 test("Deve iniciar vazia", () => {
     expect(f.isEmpty()).toBe(true);
     expect(f.length()).toBe(0);
+    expect(() => f.dequeue()).toThrow("Queue Underflow");
 })
 
 test("Deve adicionar elementos no topo", () => {
