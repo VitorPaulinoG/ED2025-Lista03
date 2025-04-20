@@ -126,6 +126,16 @@ class SimplyLinkedList {
         }
         return result.trim();
     }
+
+    copy() {
+        let l = new SimplyLinkedList();
+        let current = this.head.prox;
+        while(current != null) {
+            l.append(current.dado);
+            current = current.prox;
+        }
+        return l;
+    }
 }
 
 export default SimplyLinkedList;
